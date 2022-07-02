@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 7: 02 July, 2022
+
+**Today's Progress:** Created a clock in React.
+
+**Thoughts:** I am actually pretty proud of the design I made for this. Could probably improve on it, but I need to improve my CSS skills. 
+
+**Link to work:** [Clock](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/clock)
+
 ### Day 6: 01 July, 2022
 
 **Today's Progress:** Finished the Caesar Cipher. Actually made the github for this and started this log. Better late than never?
