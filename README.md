@@ -1,5 +1,8 @@
 # I've joined the #100DaysOfCode Challenge
 
+## Author Note
+The log file on root is just a template. I put the actual log in the 2022June folder, which is where all my projects will be for this run.
+
 ## Contents
 
 * [Rules](rules.md)

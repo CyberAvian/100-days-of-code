@@ -1,0 +1,18 @@
+body {
+  padding: 25px;
+}
+
+.header {
+  color: #FF6666;
+}
+
+.header hr {
+  border-top:5px solid #FF6666;
+}
+
+h1 {
+  margin: 10px;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 38px;
+}
