@@ -1,0 +1,26 @@
+#clock {
+  border-radius: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222;
+  padding: 20px 150px;
+  margin: 20px;
+  box-shadow: 0px -1px 100px #2255EE, 0px -1px 0px #FFF;
+}
+
+#clock p {
+  margin: 0;
+  padding: 0;
+  font-family: "Andale Mono", monospace;
+  text-shadow: 0px -1px 50px #2255EE, 0px -1px 0px #FFF;
+}
+
+.time {
+  font-size: 98px;
+  color: #2255EE;
+}
+
+.locale, .timezone {
+  color: #FFF;
+}
