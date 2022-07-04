@@ -30,7 +30,7 @@ class Clock extends Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(this.timerTick, 100)
+    this.timer = setInterval(this.timerTick, 1000)
   }
   
   render() {

@@ -1,5 +1,5 @@
 body {
-  background-image: linear-gradient(0deg, black, #333388 50%, black 95%);
+  background-image: radial-gradient(farthest-side, black, #223366 55%, black 90%);
   margin: 0;
   padding: 0;
 }

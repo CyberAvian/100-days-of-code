@@ -1,0 +1,41 @@
+.promodoro p {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  font-family: "Andale Mono", monospace;
+}
+
+.time {
+  font-size: 98px;
+  color: #2255EE;
+  text-shadow: 0px -1px 50px #2255EE, 0px -1px 0px #FFF;
+}
+
+.modes {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 5px;
+  padding: 0;
+  font-weight: bold;
+  text-shadow: 0px 0px 15px #FFF;
+}
+
+.modes li {
+  display: inline-block;
+  list-style-type: none;
+  padding: 0 20px;
+  font-size: 20px;
+  color: #FFF;
+}
+
+.modes li:hover {
+  color: #2255EE;
+  cursor: pointer;
+}
+
+.modes li.active {
+  color: #2255EE;
+  cursor: default;
+  text-shadow: 0px 0px 15px #2255EE;
+}

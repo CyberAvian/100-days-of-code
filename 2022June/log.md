@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 8: 03 July, 2022
+
+**Today's Progress:** Added a Promodoro Timer to the Clock.
+
+**Thoughts:** Beginning to get the hang of React I think. I already see ways I can improve my code. I could probably make the timer a top level element and just pass data to it based on what program is active. That would allow me to be more precise with CSS formatting and clean up some duplicate code and formatting. Really not taking advantage of props at all. 
+
+**Link to work:** [Clock](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/clock)
+
 ### Day 7: 02 July, 2022
 
 **Today's Progress:** Created a clock in React.
