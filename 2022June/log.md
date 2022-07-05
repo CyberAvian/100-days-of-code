@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 9: 04 July, 2022
+
+**Today's Progress:** Began working on a Monty Hall Problem Demonstration.
+
+**Thoughts:** Didn't get as much done today. Also didn't like the first build of this program. Will try again tomorrow.
+
+**Link to work:** N/A
+
 ### Day 8: 03 July, 2022
 
 **Today's Progress:** Added a Promodoro Timer to the Clock.
