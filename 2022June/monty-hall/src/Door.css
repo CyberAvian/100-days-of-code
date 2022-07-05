@@ -1,0 +1,35 @@
+.door {
+  background-color: #999;
+  border: 3px solid #777;
+  color: #000;
+  height: 250px;
+  width: 150px;
+  margin: 10px 50px;
+}
+
+.door:hover {
+  cursor: pointer;
+  border: 3px solid #221166;
+  background-color: #223366;
+  color: #BBB;
+}
+
+.door.goat {
+  border: 3px solid #662211;
+  background-color: #662233;
+  color: #BBB;
+  cursor: default;
+}
+
+.door.car {
+  border: 3px solid #116622;
+  background-color: #336622;
+  color: #BBB;
+  cursor: default;
+}
+
+.door.selected {
+  border: 3px solid #221166;
+  background-color: #223366;
+  color: #BBB;
+}
