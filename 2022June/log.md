@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 10: 05 July, 2022
+
+**Today's Progress:** Finished first build of Monty Hall.
+
+**Thoughts:** Had some trouble getting events to pass correctly and figuring out how to reference a component without referencing the event. Got something that works though. 
+
+**Link to work:** [Monty Hall](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/monty-hall)
+
 ### Day 9: 04 July, 2022
 
 **Today's Progress:** Began working on a Monty Hall Problem Demonstration.
