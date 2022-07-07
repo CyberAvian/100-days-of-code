@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 11: 06 July, 2022
+
+**Today's Progress:** Started work on a chat app.
+
+**Thoughts:** Had to do some trickery by making a div element editable. Input Text doesn't allow multiline text and textarea wouldn't center vertically for me. Other than that, I think I have a good thing going for this.
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 10: 05 July, 2022
 
 **Today's Progress:** Finished first build of Monty Hall.
@@ -14,7 +22,7 @@
 
 **Thoughts:** Didn't get as much done today. Also didn't like the first build of this program. Will try again tomorrow.
 
-**Link to work:** N/A
+**Link to work:** [Monty Hall](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/monty-hall)
 
 ### Day 8: 03 July, 2022
 
@@ -48,7 +56,7 @@ I put a folder called 2022June, which is the year and month I started this. I'll
 
 **Thoughts:** Failed horribly. Thought I had the basics down, but it hasn't really sunk in yet. That's alright though. Failure is only the first step on the path to success. 
 
-**Link to work:** N/A
+**Link to work:** [Caesar Cipher](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/caesar-cipher)
 
 ### Day 4: 29 June, 2022
 
@@ -56,7 +64,7 @@ I put a folder called 2022June, which is the year and month I started this. I'll
 
 **Thoughts:** Redux confused me. I will need to spend some time going over it, but first I will practice React. Crawl before you walk. Walk before you run.  
 
-**Link to work:** N/A
+**Link to work:** https://www.kirupa.com/react/index.htm
 
 ### Day 3: 28 June, 2022
 
@@ -64,7 +72,7 @@ I put a folder called 2022June, which is the year and month I started this. I'll
 
 **Thoughts:** Finally got to see how React comes together. It will take me some time to figure out how everything fits and especially to replicate the tutorials on my own.
 
-**Link to work:** N/A
+**Link to work:** https://www.kirupa.com/react/index.htm
 
 ### Day 2: 27 June, 2022
 
@@ -72,7 +80,7 @@ I put a folder called 2022June, which is the year and month I started this. I'll
 
 **Thoughts:** Nothing crazy exiciting today. 
 
-**Link to work:** N/A
+**Link to work:** https://www.kirupa.com/react/index.htm
 
 ### Day 1: 26 June, 2022
 
@@ -80,4 +88,4 @@ I put a folder called 2022June, which is the year and month I started this. I'll
 
 **Thoughts:** I tried the official React docs first, but this is easier to follow and understand. It breaks React down to small bite-sized chunks.
 
-**Link to work:** N/A
+**Link to work:** https://www.kirupa.com/react/index.htm
