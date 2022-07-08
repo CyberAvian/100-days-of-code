@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 12: 07 July, 2022
+
+**Today's Progress:** Adjusted design of overall app. Changed color of chat elements. Created chat bubbles and moved chat to bottom right of chat window.
+
+**Thoughts:** Got to a place I feel is a good jumping off point for Front End. Need to add a login screen next so users can specify a username. Won't be doing authentication or storing messages right now. Will get that stuff up and running once the backend is built. 
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 11: 06 July, 2022
 
 **Today's Progress:** Started work on a chat app.
