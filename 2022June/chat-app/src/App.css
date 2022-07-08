@@ -4,6 +4,16 @@ body {
   background-color: #121212;
 }
 
+.goodbye {
+  text-align: center;
+  font-size: 7.2em;
+}
+
+.explanation {
+  text-align: center;
+  font-size: 1.6em;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -33,12 +43,15 @@ body {
 }
 
 .chatbox {
-  border: 1px solid white;
-  background-color: white;
+  color: black;
+  background-color: #D8D8FA;
   height: 80%;
   width: 95%;
   margin-top: 1em;
-  margin-bottom: 0;
   border-radius: 1.5em;
-  box-shadow: inset 0 0 0 0.7em #DDD;
+  box-shadow: 0 0 0 0.5em #DDD;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
