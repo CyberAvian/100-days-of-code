@@ -7,6 +7,10 @@
   height: 5vh;
 }
 
+.Menu p {
+  font-size: 1.6em;
+}
+
 .Menu #exit {
   width: 5.5em;
   height: 80%;

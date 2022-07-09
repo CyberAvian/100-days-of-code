@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 
 const handleClick = () => {
   if (window.confirm('Are you sure you wish to exit?')) {
     root.unmount();
-
     createGoodbye();
   }
 }
@@ -31,6 +31,8 @@ const createGoodbye = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div>
-    <App clickHandler={handleClick} />
+    <BrowserRouter>
+      <App clickHandler={handleClick} />
+    </BrowserRouter>
   </div>
 );

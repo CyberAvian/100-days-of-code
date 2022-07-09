@@ -1,74 +1,41 @@
 import React, { Component } from 'react';
-import Menu from './Menu';
-import UserInput from './UserInput';
-import Message from './Message';
+import { Routes, Route } from 'react-router-dom';
+import Login from './Login';
+import Chat from './Chat';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = ({
-      username: "TestUser",
-      messages: [],
-    });
+    this.state = {
+      user: null,
+      error: null,
+    };
 
-    this.handleKeyPressed = this.handleKeyPressed.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleKeyPressed(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      this.setMessages();
+  handleSubmit(event) {
+    event.preventDefault();
+    let user = event.target.username.value;
+    if (user !== "") {
+      this.setState({ user });
+    } else {
+      this.setState({ error: "Please enter a value" });
     }
-
-    this.scrollChatBox();
-  }
-
-  handleClick(e) {
-    this.setMessages();
-    e.preventDefault();
-  }
-
-  scrollChatBox() {
-    var chatbox = document.getElementById("chatbox");
-    chatbox.scrollTop = chatbox.scrollHeight;
-  }
-
-  setMessages() {
-    var messages = [...this.state.messages];
-    var messageBox = document.getElementById('messageBox');
-    messages.push(<Message text={messageBox.innerText} />);
-
-    this.resetMessageBox(messageBox);
-
-    this.setState({
-      messages: messages,
-    });
-  }
-
-  resetMessageBox(messageBox) {
-    messageBox.innerText = '';
-    messageBox.focus();
-  }
-
-  componentDidMount() {
-    this.resetMessageBox(document.getElementById('messageBox'));
   }
 
   render() {
+    let { user, error } = this.state;
+    let login = <Login  user={user} error={error} submitHandler={this.handleSubmit} />
+    let chat = <Chat username={user} clickHandler={this.props.clickHandler} />
+    
     return (
-      <div className='App' id='app'>
-        <h1>Chat App</h1>
-        <Menu username={this.state.username}
-              clickHandler={this.props.clickHandler} />
-        <div className='chatbox' id="chatbox">
-          {this.state.messages}
-        </div>
-        <UserInput  keyDownHandler={this.handleKeyPressed}
-                    clickHandler={this.handleClick} />
-      </div>
+      <Routes>
+        <Route index path="/" element={login} />
+        <Route path="/chat" element={chat} />
+      </Routes>
     );
   }
 }
