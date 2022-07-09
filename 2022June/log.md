@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 13: 08 July, 2022
+
+**Today's Progress:** Created login screen. Created user list. Implemented routing.
+
+**Thoughts:** I'm not sure if I implemented the routing properly. It works, but it looks a bit messy. Front end is almost fully built now.
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 12: 07 July, 2022
 
 **Today's Progress:** Adjusted design of overall app. Changed color of chat elements. Created chat bubbles and moved chat to bottom right of chat window.
