@@ -1,0 +1,47 @@
+.UserInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: auto;
+  width: 95vw;
+  margin: 1em;
+}
+
+.UserInput form {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+#messageBox {
+  text-align: left;
+  width: 100%;
+  min-height: 1vh;
+  max-height: 15vh;
+  border-radius: 0.7em;
+  font-size: 1.6em;
+  background: white;
+  border: 1px solid white;
+  margin-right: 1em;
+  padding: 0.3em 0.3em 0.3em 0.5em;
+  overflow: auto;
+  color: #000;
+  box-shadow: 0 0 0 0.2em #DDD;
+  word-wrap: break-word;
+  word-break: break-all;
+  background-color: #D8D8FA;
+}
+
+#messageBox:empty::before {
+  content:attr(data-text);
+}
+
+#messageSend {
+  height: 5vh;
+  width: 5em;
+  border-radius: 0.7em;
+  margin-bottom: -3px;
+}
