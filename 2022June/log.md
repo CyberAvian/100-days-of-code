@@ -1,5 +1,21 @@
 # 100 Days Of Code - Log
 
+### Day 15: 10 July, 2022
+
+**Today's Progress:** Tried and failed to get things working between client, server, and socket.io.
+
+**Thoughts:** I have absolutely no idea what I'm doing and I can't find anything that even remotely comes close to what I'm trying to achieve. I think I may need to take some time to study up and look at some example full stack projects. See if I can make sense of this. I just don't think I'm doing this right.
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
+### Day 14: 09 July, 2022
+
+**Today's Progress:** Seperated into frontend and backend. Trying to figure out how this all works.
+
+**Thoughts:** I have absolutely no idea how to create a full stack website. I think I'm in over my head but I'm going to push on.
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 13: 08 July, 2022
 
 **Today's Progress:** Created login screen. Created user list. Implemented routing.
