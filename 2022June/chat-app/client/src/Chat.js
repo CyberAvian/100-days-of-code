@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Navigate } from 'react-router-dom';
+import { io } from 'socket.io-client';
 import Menu from './Menu';
 import UserInput from './UserInput';
 import Message from './Message';
 import './Chat.css';
 
 class Chat extends Component {
+  #socket = io();
+
   constructor(props) {
     super(props)
 
@@ -16,7 +19,13 @@ class Chat extends Component {
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.setUsername = this.setUsername.bind(this);
+
+    this.#socket.on('user login', (username) => {
+      username = username[0].toUpper() + username.slice(1);
+      this.setState({
+        username: username,
+      });
+    });
   }
 
   handleKeyPress(e) {
@@ -55,24 +64,15 @@ class Chat extends Component {
     messageBox.focus();
   }
 
-  setUsername() {
-    if (this.props.username) {
-      let username = this.props.username.charAt(0).toUpperCase() + this.props.username.slice(1);
-      this.setState({
-        username: username,
-      });
-    }
-  }
-
   componentDidMount() {
     this.resetMessageBox(document.getElementById('messageBox'));
-    this.setUsername();
   }
 
   render() {
+    console.log(this.state.username);
     return (
       <div className='chat' id='chat'>
-        {!this.props.username && (
+        {!this.state.username && (
           <Navigate to="/" replace={true} />
         )}
         <h1>Chat App</h1>
