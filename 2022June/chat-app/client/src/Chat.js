@@ -69,14 +69,14 @@ class Chat extends Component {
   }
 
   render() {
-    console.log(this.state.username);
+    var username = this.props.username;
     return (
       <div className='chat' id='chat'>
-        {!this.state.username && (
+        {!username && (
           <Navigate to="/" replace={true} />
         )}
         <h1>Chat App</h1>
-        <Menu username={this.state.username}
+        <Menu username={username}
               clickHandler={this.props.clickHandler} />
         <div className='chatwindow'>
           <div className='chatbox' id="chatbox">
@@ -84,7 +84,7 @@ class Chat extends Component {
           </div>
           <div className='userlist' id='userlist'>
             <p>Users Online</p>
-            {this.state.username}
+            {username}
           </div>
         </div>
         <UserInput clickHandler={this.handleClick} keyPressHandler={this.handleKeyPress} />
