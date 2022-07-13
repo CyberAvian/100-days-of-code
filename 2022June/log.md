@@ -1,5 +1,21 @@
 # 100 Days Of Code - Log
 
+### Day 17: 12 July, 2022
+
+**Today's Progress:** Finally got communication between the frontend login and backend server to work. Got navigation between login and chat working.
+
+**Thoughts:** I figured it out! Writing it out helped. It's not the best practice, but it works for the moment. 
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
+### Day 16: 11 July, 2022
+
+**Today's Progress:** Decided to handwrite how communication should work between client and server.
+
+**Thoughts:** Did not have much time today but with the time I did have, I at least got an idea of how to fix communication.
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 15: 10 July, 2022
 
 **Today's Progress:** Tried and failed to get things working between client, server, and socket.io.
