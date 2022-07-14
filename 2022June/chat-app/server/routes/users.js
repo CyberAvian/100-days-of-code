@@ -5,16 +5,16 @@ let users = [];
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.json(users);
 });
 router.post('/', function(req, res, next) {
   var username = req.body.username;
   if (username && username !== '') {
     users.push(username);
     console.log(`User ${username} connected`);
-    res.json({result: 'success', username: username});
+    res.json({username: username, error: null});
   } else {
-    res.json({error: 'Username required'})
+    res.json({username: null, error: 'Username required'});
   }
 });
 

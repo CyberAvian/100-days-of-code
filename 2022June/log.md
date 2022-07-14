@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 18: 13 July, 2022
+
+**Today's Progress:** Working on correcting sockets. Previous attempt kept reconnecting clients and crashing server.
+
+**Thoughts:** I am learning about servers and how to balance everything. It's coming along at least.
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 17: 12 July, 2022
 
 **Today's Progress:** Finally got communication between the frontend login and backend server to work. Got navigation between login and chat working.
