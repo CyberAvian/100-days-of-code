@@ -50,8 +50,13 @@
   font-size: 1.6em;
 }
 
-.userlist p {
-  font-size: 1.1em;
+.userlist h2 {
+  font-size: 1.3rem;
   font-weight: bold;
-  margin: 7px 0 10px 0;
+  margin: 5px;
+}
+
+.userlist p {
+  font-size: 1rem;
+  margin: 0 0 5px 0;
 }

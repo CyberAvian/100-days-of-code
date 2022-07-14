@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
-import { io } from "socket.io-client";
 import "./Login.css";
 
 class Login extends Component {
-  // #socket = io();
-
   componentDidMount() {
     let username = document.getElementById('username');
     username.focus();

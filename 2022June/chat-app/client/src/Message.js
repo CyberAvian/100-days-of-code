@@ -7,6 +7,6 @@ const Message = ({ text }) => {
     </div>
   )
 }
-  
+
 
 export default Message;
