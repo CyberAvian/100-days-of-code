@@ -1,9 +1,10 @@
 import './Message.css';
 
-const Message = ({ text }) => {
+const Message = ({ username, text, sender, showUsername }) => {
   return (
-    <div className='Message'>
-      {text}
+    <div className={`Message ${sender} ${showUsername}`}>
+      {/* <h4>{username}</h4> */}
+      <p>{text}</p>
     </div>
   )
 }

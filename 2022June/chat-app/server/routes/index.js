@@ -13,84 +13,71 @@ messages = [];
 
 module.exports = (io) => {
   io.on('connection', (socket) => {
-    var socketId = socket.id;
+    var socketid = socket.id;
     var user = null;
+
+    const sendError = (errorMessage) => {
+      socket.emit('set error', errorMessage);
+    }
 
     // Send socket id to user
     console.log(`Connected Socket: ${socket.id}`);
-    io.emit('id', socket.id);
-
-    // // Update user list on connect
-    // socket.on('set user', (username) => {
-    //   var error = null;
-
-    //   if (username && username !== '') {
-    //     users.push({username: user, socketId: socketId});
-    //     console.log(`Connected User: ${user}`)
-    //     io.emit('update users', users);
-    //   } else {
-    //     error = 'Username required';
-    //     io.emit('set error', error);
-    //   }
-    // });
-
-    // // Update messages on message send
-    // socket.on('set message', (message) => {
-    //   var error = null;
-
-    //   if (message && message !== '') {
-    //     messages.push({username: user, message: message});
-    //     console.log(`Message Sent: ${user}: ${message}`);
-    //     io.emit('update messages', messages);
-    //   } else {
-    //     error = 'Message required';
-    //     io.emit('set error', error);
-    //   }
-    // });
+    socket.emit('set id', socket.id);
 
     // Update username or messages depending on the data sent from the client
     socket.on('set data', (type, content) => {
-      var error = null;
-      console.log(type, content);
-
       if (content) {
         switch (type) {
           case 'username':
             user = content;
             users.push({username: user, socketid: socketid});
             console.log(`Connected User: ${user}`);
-            io.emit('update username', user);
+            socket.emit('set username', user);
             break;
-          case 'users fetch':
-            console.log(`All Users Sent`);
-            io.emit('users fetch', users);
-            break;
-          case 'users update':
+          case 'user':
             console.log(`Sent new user to all clients`);
-            socket.broadcast.emit('users update', user);
-          case 'messages fetch':
-            console.log('Sent all messages');
-            socket.emit('messages fetch', messages);
-          case 'messages update':
-            messages.push({username: user, message: message});
-            console.log(`Message Sent: ${user}: ${message}`);
-            io.emit('messages update', content);   
+            io.emit('update users', user);
+            break;
+          case 'message':
+            messageObj = {username: user, message: content};
+            messages.push(messageObj);
+            console.log(`Message Sent: ${user}: ${content}`);
+            io.emit('update messages', messageObj);
             break;
           default:
-            error = 'server error';
-            io.emit('set error', error);
+            console.log(`server error on set ${type} data`);
+            sendError('server error')
+            break;
         }
       } else {
-        error = `${type} required`;
-        io.emit('set error', error);
+        console.log(error);
+        sendError(`${type} required`);
+      }
+    });
+
+    // Fetch all stored data (mostly used for new connections setting initial data)
+    socket.on('get data', (type) => {
+      switch (type) {
+        case 'users':
+          console.log(`Sent current user list`);
+          io.emit('get users', users);
+          break;
+        case 'messages':
+          console.log('Sent current message list');
+          socket.emit('get messages', messages);
+          break;
+        default:
+          console.log(`server error on get ${type} data`);
+          sendError('server error');
+          break;
       }
     });
 
     // Update user list on disconnect
     socket.on('disconnect', () => {
-      users.pop({username: user, socketId: socketId});
+      users.pop({username: user, socketid: socketid});
       console.log(`Disconnected User: ${user}`);
-      io.emit('update users', users);
+      socket.emit('update users', users);
     });
   });
   return router;

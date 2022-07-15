@@ -1,9 +1,9 @@
-import { io } from 'socket.io-client';
+import React, { useState, useContext, useEffect } from 'react';
+import { SocketContext } from './socket';
 import './UserInput.css';
 
-function UserInput({ username }) {
-
-  const socket = io();
+const UserInput = ({ username }) => {
+  const socket = useContext(SocketContext);
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
@@ -29,18 +29,7 @@ function UserInput({ username }) {
     var message = messageBox.innerText;
 
     if (message) {
-      fetch('http://localhost:9000/messages', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username: username, message: message})
-      })
-      .then(res => res.json())
-      .then(data => {
-        if (!data.error) {
-          socket.emit('message sent', data);
-        }
-      });
-
+      socket.emit('set data', 'message', message);
       messageBox.innerText = '';
     }
   }

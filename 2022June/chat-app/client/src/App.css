@@ -5,13 +5,13 @@ body {
 }
 
 h1 {
-  font-size: 4.8em;
+  font-size: 3rem;
   font-weight: bold;
   margin: 0;
 }
 
 button {
-  font-size: 1.6em;
+  font-size: 1rem;
   color: #0F0F0F;
   background-color: #B8B8FA;
   border-radius: 0.5em;

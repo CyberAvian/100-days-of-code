@@ -13,24 +13,32 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    socket.on('id', (socketid) => {
+    socket.on('set id', (socketid) => {
       setSocketid(socketid);
     });
 
-    socket.on('update username', (username) => {
+    socket.on('set username', (username) => {
       setUsername(username);
     });
 
     socket.on('set error', (error) => {
       setError(error);
-    });    
+    });
 
     return () => socket.disconnect();
-  }, []);  
+  }, []);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let username = event.target.username.value;
+    if (username) {
+      socket.emit('set data', 'username', username);
+    }
+  }
 
   return (
     <Routes>
-      <Route index path="/" element={<Login username={username} />} />
+      <Route index path="/" element={<Login username={username} error={error} submitHandler={handleSubmit} />} />
       <Route path="/chat" element={<Chat  username={username} />} />
     </Routes>
   );
