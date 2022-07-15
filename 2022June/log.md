@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 19: 14 July, 2022
+
+**Today's Progress:** Sockets work properly now. Messages and users update correctly. Multiple users can connect with seperate names. 
+
+**Thoughts:** That took some time to figure out and sort through, but I got there in the end. Now to figure out UI issues like why the chat won't scroll.
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 18: 13 July, 2022
 
 **Today's Progress:** Working on correcting sockets. Previous attempt kept reconnecting clients and crashing server.
