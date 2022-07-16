@@ -1,20 +1,27 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+const themes = [
+  'vodka', 
+  'mauve', 
+  'baby-blue-eyes', 
+  'deep-peach', 
+  'tea-green', 
+  'melon', 
+  'nyanza', 
+  'light-hot-pink', 
+  'topaz', 
+  'pale-green'
+];
 
-// module.exports = router;
-
-users = [];
-messages = [];
+var users = [];
+var messages = [];
 
 module.exports = (io) => {
   io.on('connection', (socket) => {
     var socketid = socket.id;
     var user = null;
+    var theme = null;
 
     const sendError = (errorMessage) => {
       socket.emit('set error', errorMessage);
@@ -24,22 +31,25 @@ module.exports = (io) => {
     console.log(`Connected Socket: ${socket.id}`);
     socket.emit('set id', socket.id);
 
+    // Set theme
+    var themeNum = Math.floor(Math.random() * (themes.length - 1));
+    theme = themes[themeNum];
+
     // Update username or messages depending on the data sent from the client
     socket.on('set data', (type, content) => {
       if (content) {
         switch (type) {
           case 'username':
             user = content;
-            users.push({username: user, socketid: socketid});
-            console.log(`Connected User: ${user}`);
+            userObj = {username: user, socketid: socketid};
+            users.push(userObj);
+            console.log(`Connected User: ${user} at Socket: ${socketid}`);
             socket.emit('set username', user);
-            break;
-          case 'user':
-            console.log(`Sent new user to all clients`);
-            io.emit('update users', user);
+            console.log(`Notified Clients of Connected User: ${user} at Socket: ${socketid}`);
+            socket.broadcast.emit('update users', userObj);
             break;
           case 'message':
-            messageObj = {username: user, message: content};
+            messageObj = {username: user, message: content, theme: theme};
             messages.push(messageObj);
             console.log(`Message Sent: ${user}: ${content}`);
             io.emit('update messages', messageObj);
@@ -50,7 +60,7 @@ module.exports = (io) => {
             break;
         }
       } else {
-        console.log(error);
+        console.log(`${type} was not provided`);
         sendError(`${type} required`);
       }
     });
@@ -59,11 +69,11 @@ module.exports = (io) => {
     socket.on('get data', (type) => {
       switch (type) {
         case 'users':
-          console.log(`Sent current user list`);
-          io.emit('get users', users);
+          console.log(`Sent current user list to ${user} on socket ${socketid}`);
+          socket.emit('get users', users);
           break;
         case 'messages':
-          console.log('Sent current message list');
+          console.log(`Sent current message list to ${user} on socket ${socketid}`);
           socket.emit('get messages', messages);
           break;
         default:

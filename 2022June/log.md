@@ -1,5 +1,13 @@
 # 100 Days Of Code - Log
 
+### Day 20: 15 July, 2022
+
+**Today's Progress:** Got some UI fixes implemented. Adjusted some coloring and formatting issues. Got a scrollbar working for messages. Got multiple user connections to work properly. Added colors to user messages. Added username name tag to messages.
+
+**Thoughts:** There was a lot of frustration with getting it to this point, but I am proud of what I made. Really need to test now and make a list of bugs. Also need to work on documentation and a more formal, detailed comment structure for my code. 
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/100daysofcode/tree/main/2022June/chat-app)
+
 ### Day 19: 14 July, 2022
 
 **Today's Progress:** Sockets work properly now. Messages and users update correctly. Multiple users can connect with seperate names. 
