@@ -17,26 +17,27 @@
   width: 100vw;
   margin: 0;
   padding: 0;
-  overflow-y: hidden;
 }
 
 .chatwindow {
-  max-height: 80%;
+  min-height: 55%;
+  max-height: 77%;
+  height: 100%;
   width: 95%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 1em;
+  margin-top: 0.7rem;
 }
 
 .chatbox, .userlist {
   position: relative;
-  color: #010101;
-  background-color: #D8D8FA;
-  min-height: min-content;
-  max-height: 100%;
-  box-shadow: 0 0 0 5px #b8b8fa;
-  overflow-y: auto;
+  color: var(--font-color);
+  background-color: var(--secondary-color);
+  box-shadow: 0 0 0 5px var(--primary-color);
+  height: 100%;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 .chatbox {
@@ -44,7 +45,8 @@
   border-radius: 1.5em 0 0 1.5em;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .userlist {

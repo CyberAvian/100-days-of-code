@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { SocketContext } from './socket';
 import './UserInput.css';
 
@@ -10,18 +10,11 @@ const UserInput = ({ username }) => {
       event.preventDefault();
       sendMessage();
     }
-
-    scrollChatBox();
   }
 
   const handleClick = (event) => {
     event.preventDefault();
     sendMessage();
-  }
-
-  const scrollChatBox = () => {
-    var chatbox = document.getElementById("chatbox");
-    chatbox.scrollTop = chatbox.scrollHeight;
   }
 
   const sendMessage = () => {

@@ -6,7 +6,7 @@ import UserInput from './UserInput';
 import Message from './Message';
 import './Chat.css';
 
-const Chat = ({ username }) => {
+const Chat = ({ username, exitHandler }) => {
   const socket = useContext(SocketContext);
 
   const [users, setUsers] = useState([]);
@@ -23,75 +23,89 @@ const Chat = ({ username }) => {
     }
 
     resetMessageBox();
-
-    // Populate users
-    socket.emit('get data', 'users');
-
-    socket.on('get users', (users) => {
-      var userElements = [];
-      users.forEach(user => {
-        var userElement = <p key={user.socketid}>{user.username}</p>
-        userElements.push(userElement);
-      });
-      setUsers(userElements);
-    });
-
-    // Populate messages
-    socket.emit('get data', 'messages');
-
-    socket.on('get messages', (messages) => {updateMessages(...messages)});
-
-    // Update when a user connects or disconnects
-    const updateUsers = (user) => {
+    // Update Functions
+    function updateUsers(...args) {
       setUsers(existingUsers => {
-        var userElement = <p key={user.socketid}>{user.username}</p>
-        return [...existingUsers, userElement];
+        var userElements = [];
+        args.forEach((user) => {
+          console.log(user);
+          var userElement = <p key={user.socketid}>{user.username}</p>;
+          userElements.push(userElement);
+        });
+        return [...existingUsers, userElements];
       });
     }
+
+    function updateMessages(...args) {
+      setMessageList(existingMessages => {
+        var messages = [];
+
+        setMessageElements((existingElements) => {
+          var messageElements = [];
+          var elementCount = existingElements.length;
+  
+          args.forEach((message, index) => {
+            var isSenderUser = message.username === username;
+
+            // Used to position message within the chatbox
+            var sender = isSenderUser ? 'self' : 'other';
+            
+            // Should show username only if the message wasn't sent by the user and wasn't sent by the same user who sent the previous message in the list
+            var isPrevUserSame = null;
+            if (index === 0) {
+              var lastElement = existingElements.length > 0 ? existingElements.length - 1 : null;
+              isPrevUserSame = lastElement ? message.username === existingElements[lastElement].props.username : false;
+            } else {
+              isPrevUserSame = message.username === args[index - 1].username;
+            }
+
+            // Determine if the sender of the message needs displayed in chatbox
+            var showUsername = 'show';
+            if (isSenderUser || isPrevUserSame) {
+              showUsername = 'hide';
+            }
+
+            var messageElement = <Message key={`${message.username}-${elementCount + messageElements.length}`} 
+                                          username={message.username}
+                                          text={message.message}
+                                          sender={sender}
+                                          showUsername={showUsername}
+                                          style={message.theme} />
+            // messageElement.setAttribute('theme', 'baby-blue-eyes');
+            messageElements.push(messageElement);
+            messages.push(message);
+          });
+  
+          return [...existingElements, ...messageElements];
+        });
+
+        return [...existingMessages, messages];
+      });
+    }
+
+    // Handle Users
+    socket.emit('get data', 'users');
+
+    socket.on('get users', (users) => {updateUsers(...users)});
 
     socket.on('update users', updateUsers);
 
-    // Update when a user sends a new message
-    function updateMessages(...args) {
-      setMessageElements((existingElements, index) => {
-        var messageElements = [];
-        var elementCount = existingElements.length;
+    // Handle messages
+    socket.emit('get data', 'messages');
 
-        args.forEach((message) => {
-          console.log(message);
-          // Determine sender to position message in chatbox
-          var sender = message.username === username ? 'self' : 'other';
-          // Determine if the sender of the message needs displayed in chatbox
-          var showUsername = 'show';
-          // Should show username only if the message wasn't sent by the user and wasn't sent by the same user who sent the previous message in the list
-          if (message.username === username || ( messageList[index - 1] && message.username === messageList[index - 1].username )) {
-            console.log(message.username === username);
-            console.log(messageList[index - 1]);
-            console.log(( messageList[index - 1] && message.username === messageList[index - 1].username ));
-            showUsername = 'hide';
-          }
-
-          var messageElement = <Message key={`${message.username}-${elementCount + messageElements.length}`} 
-                                      username={message.username}
-                                      text={message.message}
-                                      sender={sender}
-                                      showUsername={showUsername} />
-          messageElements.push(messageElement);
-        });
-
-        return [...existingElements, messageElements];
-      });
-
-      setMessageList(existingMessages => {return [...existingMessages, arguments];});
-    }
+    socket.on('get messages', (messages) => {updateMessages(...messages)});
  
     socket.on('update messages', updateMessages);
     
+    // Handle Errors
     socket.on('set error', (error) => {
       setError(error);
       alert(error);
     });
 
+    console.log(error);
+
+    // Cleanup
     return () => {
       socket.off('get users');
       socket.off('get messages');
@@ -100,7 +114,17 @@ const Chat = ({ username }) => {
       socket.off('set error');
       socket.disconnect();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    const scrollChatBox = () => {
+      var chatbox = document.getElementById("chatbox");
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    scrollChatBox();
+  });
 
   return (
     <div className='chat' id='chat'>
@@ -108,7 +132,7 @@ const Chat = ({ username }) => {
         <Navigate to="/" replace={true} />
       )}
       <h1>Chat App</h1>
-      <Menu username={username} />
+      <Menu username={username} exitHandler={exitHandler}/>
       <div className='chatwindow'>
         <div className='chatbox' id="chatbox">
           {messageElements}

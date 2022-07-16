@@ -19,7 +19,7 @@
   font-size: 24px;
   border-radius: 15px;
   padding: 5px 5px 5px 10px;
-  background-color: #D8D8FA;
+  background-color: var(--secondary-color);
 }
 
 .form button {

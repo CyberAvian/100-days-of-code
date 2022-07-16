@@ -13,6 +13,17 @@ const App = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    document.documentElement.setAttribute('theme', 'vodka');
+    // document.documentElement.setAttribute('theme', 'mauve');
+    // document.documentElement.setAttribute('theme', 'baby-blue-eyes');
+    // document.documentElement.setAttribute('theme', 'deep-peach');
+    // document.documentElement.setAttribute('theme', 'tea-green');
+    // document.documentElement.setAttribute('theme', 'melon');
+    // document.documentElement.setAttribute('theme', 'nyanza');
+    // document.documentElement.setAttribute('theme', 'light-hot-pink');
+    // document.documentElement.setAttribute('theme', 'topaz');
+    // document.documentElement.setAttribute('theme', 'pale-green');
+
     socket.on('set id', (socketid) => {
       setSocketid(socketid);
     });
@@ -25,9 +36,20 @@ const App = () => {
       setError(error);
     });
 
-    return () => socket.disconnect();
+    return () => {
+      socket.off('set id');
+      socket.off('set username');
+      socket.off('set error');
+      socket.disconnect();
+    }
   }, []);
-  
+
+  const handleExit = (event) => {
+    if (window.confirm('Are you sure you want to exit?')) {
+      window.close();
+    }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     let username = event.target.username.value;
@@ -39,98 +61,9 @@ const App = () => {
   return (
     <Routes>
       <Route index path="/" element={<Login username={username} error={error} submitHandler={handleSubmit} />} />
-      <Route path="/chat" element={<Chat  username={username} />} />
+      <Route path="/chat" element={<Chat  username={username} exitHandler={handleExit} />} />
     </Routes>
   );
 }
-
-
-// class App extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       username: null,
-//       socketId: null,
-//       error: null,
-//     }
-
-//     // this.socket.on('user connect', (response) => {
-//     //   var username = response.username;
-//     //   var socketId = response.socketId;
-
-//     //   fetch('http://localhost:9000/users', {
-//     //     method: 'POST',
-//     //     headers: {'Content-Type': 'application/json'},
-//     //     body: JSON.stringify({username: username, socketId: socketId})
-//     //   })
-//     //   .then(res => res.json())
-//     //   .then(body => {this.handleResponse(body)});
-//     // });
-
-//     this.socket.on('id', (socketId) => {
-//       this.setState({
-//         socketId: socketId,
-//       });
-//     });
-
-//     this.socket.on('update username', (username) => {
-//       this.setState({
-//         username: username,
-//       });
-//     });
-
-//     this.socket.on('set error', (error) => {
-//       this.setState({
-//         error: error,
-//       });
-//     });
-
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//   }
-
-//   // handleSubmit(event) {
-//   //   event.preventDefault();
-//   //   let username = event.target.username.value;
-//   //   if (username) {
-//   //     this.socket.emit('user connect');
-//   //     event.target.username.value = '';
-//   //   }
-//   // }
-
-//   handleSubmit(event) {
-//     event.preventDefault();
-//     let username = event.target.username.value;
-//     if (username) {
-//       this.socket.emit('set data', 'username', username);
-//     }
-//   }
-
-//   // handleResponse(response) {
-//   //   if (response.username) {
-//   //     var username = response.username;
-//   //     username = username[0].toUpperCase() + username.slice(1);
-//   //   } else {
-//   //     // Default response for invalid username is null
-//   //     username = response.username;
-//   //   }
-
-//   //   this.setState({
-//   //     username: username,
-//   //     error: response.error,
-//   //   });
-//   // }
-
-//   render() {
-//     return (
-//       <Routes>
-//         <Route index path="/" element={<Login username={this.state.username}
-//                                               error={this.state.error}
-//                                               submitHandler={this.handleSubmit} />} />
-//         <Route path="/chat" element={<Chat  username={this.state.username} />} />
-//       </Routes>
-//     );
-//   }
-// }
 
 export default App;

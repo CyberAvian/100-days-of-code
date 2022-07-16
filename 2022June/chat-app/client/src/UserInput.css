@@ -2,9 +2,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 10%;
+  min-height: 5%;
+  max-height: 20%;
   width: 95vw;
-  margin: 1em;
+  margin: 0.7rem;
 }
 
 .UserInput form {
@@ -19,20 +20,18 @@
 #messageBox {
   text-align: left;
   width: 100%;
-  min-height: 5%;
-  max-height: 10%;
+  min-height: min-content;
+  max-height: 80%;
   border-radius: 0.7em;
   font-size: 1.6em;
-  background: white;
-  border: 1px solid white;
   margin-right: 1em;
   padding: 0.3em 0.3em 0.3em 0.5em;
   overflow: auto;
-  color: #000;
-  box-shadow: 0 0 0 0.2em #DDD;
+  color: var(--font-color);
+  box-shadow: 0 0 0 0.2em var(--primary-color);
   word-wrap: break-word;
   word-break: break-all;
-  background-color: #D8D8FA;
+  background-color: var(--secondary-color);
 }
 
 #messageBox:empty::before {
@@ -40,7 +39,7 @@
 }
 
 #messageSend {
-  height: 100%;
+  height: 2.3rem;
   width: 5em;
   border-radius: 0.7em;
   margin-bottom: -3px;
