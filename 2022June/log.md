@@ -1,5 +1,21 @@
 # 100 Days Of Code - Log
 
+### Day 25: 20 July, 2022
+
+**Today's Progress:** Coworker runs a twitch channel. Someone in the channel said he needs an uwubot. He says he can't find one. He will regret telling me that.
+
+**Thoughts:** I will regret making this abomination. 
+
+**Link to work:** N/A
+
+### Day 21: 16 July, 2022 - Day 24: 19 July, 2022
+
+**Today's Progress:** Doing a bunch of updates at once because honestly, I forgot about this. Chat app is hosted on Heroku and it works. Did some bug fixing and discovered sockets were set up wrong. Not going to fix that right now. For now, I think I can call version 1 done.
+
+**Thoughts:** This was a great project, but I'm going to step away for now. I'll come back to it later on. 
+
+**Link to work:** [Chat App](https://github.com/CyberAvian/cyberavian-chat-app)
+
 ### Day 20: 15 July, 2022
 
 **Today's Progress:** Got some UI fixes implemented. Adjusted some coloring and formatting issues. Got a scrollbar working for messages. Got multiple user connections to work properly. Added colors to user messages. Added username name tag to messages.
